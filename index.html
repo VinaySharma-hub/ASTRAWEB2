@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Astra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <style>
+    /* Example: using a star image as cursor */
+body {
+    cursor: url('assets/images/start.jpg'), auto;
+}
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #000000, #020116, #010d2e, #4c515f);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+
+    .stars {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url("https://www.transparenttextures.com/patterns/stardust.png");
+      z-index: -1;
+      animation: moveStars 60s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -10000px 5000px;
+      }
+    }
+
+    model-viewer {
+      width: 100%; /* Use responsive width */
+      height: 100%;
+      --poster-color: transparent;
+      transition: transform 0.2s ease-out;
+      cursor: grab;
+    }
+
+    .gallery-scroll-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .gallery-scroll-track {
+      display: flex;
+      width: max-content;
+      animation: scrollLeft 40s linear infinite;
+    }
+
+    .gallery-scroll-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 280px; /* Slightly smaller for better mobile view */
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      margin: 0 1rem;
+    }
+
+    .gallery-item .topic {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 1rem 0.5rem 0.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(80, 65, 246, 0.4);
+    }
+
+    .gallery-item:hover .topic {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-item a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          rgba(1, 13, 46, 0.9) 0%,
+          transparent 10%,
+          transparent 90%,
+          rgba(1, 13, 46, 0.9) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Custom scrollbar for timeline */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    .timeline-path {
+      background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899);
+    }
+
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob { animation: blob 7s infinite; }
+    .animation-delay-2000 { animation-delay: 2s; }
+  </style>
+</head>
+<div class="fixed inset-0 z-[-1]">
+    <img src="assets/images/Background.png" class="w-full h-full object-cover opacity-5" alt="Background" />
+</div>
+<body class="relative">
+
+  <div class="stars"></div>
+
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <div class="flex-shrink-0">
+                <a href="#" class="flex items-center gap-2">
+                    <img src="assets/images/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
+                </a>
+            </div>
+
+            <div class="hidden lg:block">
+                <ul class="flex items-center space-x-8 text-gray-200 text-base">
+                    <li><a href="#Team" class="hover:text-purple-400 transition-colors duration-300">Team</a></li>
+                    <li><a href="#Projects" class="hover:text-purple-400 transition-colors duration-300">Projects</a></li>
+                    <li><a href="#sponsors" class="hover:text-purple-400 transition-colors duration-300">Sponsors</a></li>
+                    <li><a href="#brochure" class="hover:text-purple-400 transition-colors duration-300">Brochure</a></li>
+                    <li><a href="#Roadmap" class="hover:text-purple-400 transition-colors duration-300">Road Map</a></li>
+                    <li><a href="#Gallery" class="hover:text-purple-400 transition-colors duration-300">Gallery</a></li>
+                    <li><a href="#Contact" class="hover:text-purple-400 transition-colors duration-300">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:hidden flex items-center">
+                <button id="menu-btn" class="text-gray-200 hover:text-purple-400 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden hidden bg-gray-900 bg-opacity-90 backdrop-blur-md">
+        <ul class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+            <li><a href="#Team" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Team</a></li>
+            <li><a href="#Projects" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Projects</a></li>
+            <li><a href="#sponsors" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Sponsors</a></li>
+            <li><a href="#brochure" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Brochure</a></li>
+            <li><a href="#Roadmap" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Road Map</a></li>
+            <li><a href="#Gallery" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Gallery</a></li>
+            <li><a href="#Contact" class="block py-3 text-gray-200 hover:bg-gray-800 rounded">Contact Us</a></li>
+        </ul>
+    </div>
+  </nav>
+  
+  <section class="flex flex-col md:flex-row items-center justify-between text-center md:text-left min-h-screen pt-24 md:pt-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto gap-12">
+      <div class="flex-1">
+          <p class="max-w-2xl text-gray-300 text-xl sm:text-2xl mb-8 font-light tracking-wide leading-relaxed drop-shadow-[0_0_25px_#15aafa]">
+              <span class="role"></span>
+          </p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl mb-6 font-[Orbitron] font-black uppercase">
+              <span class="text-white drop-shadow-[0_0_25px_#15aafa]">TEAM</span>
+              <span class="text-blue-600 drop-shadow-[0_0_25px_#15aafa]">ASTRA</span>
+          </h1>
+          <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto md:mx-0">
+              We are a hub for UAV and drone innovation—uniting enthusiasts to explore aerial robotics through design challenges, skill-building workshops, and real-world applications.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 mt-9 mb-12 justify-center md:justify-start">
+              <a href="#Contact" class="relative bg-indigo-950 text-gray-200 px-6 py-3 rounded-lg font-bold shadow-lg tracking-wide transition-all duration-300 ease-in-out overflow-hidden group hover:shadow-2xl hover:scale-105">
+                  <span class="block group-hover:opacity-0 transition-opacity duration-300">Join Team</span>
+                  <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <img src="icon." alt="">
+                  </span>
+              </a>
+              <a href="#Projects" class="relative bg-gray-900 text-gray-200 px-6 py-3 rounded-lg font-semibold shadow-lg tracking-wide transition-all duration-300 ease-in-out overflow-hidden group hover:shadow-xl hover:scale-105">
+                  <span class="block group-hover:opacity-0 transition-opacity duration-300">Explore Projects</span>
+                  <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">✨</span>
+              </a>
+          </div>
+      </div>
+
+
+<div class="flex justify-center items-center h-screen">
+  <model-viewer 
+    class="w-[30rem] h-[30rem]"
+    src="assets/models/drone.glb"
+    alt="A 3D drone"
+    auto-rotate
+    rotation-per-second="15deg"
+    camera-controls
+    shadow-intensity="1"
+    disable-zoom
+    scale="4.5 4.5 4.5">
+  </model-viewer>
+</div>
+
+  </section>
+
+  <section id="Team" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center text-center lg:text-left mb-12">
+          <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40">1</span>
+          <div class="lg:-ml-8">
+              <h2 class="text-4xl lg:text-5xl font-bold text-gray-200 tracking-wide scroll-mt-20">MEET THE TEAM</h2>
+              <p class="text-gray-300 py-2 max-w-xl">Meet the individuals who are leading our club, organizing events, and mentoring new members and projects.</p>
+          </div>
+      </div>
+      <h3 class="text-3xl font-semibold mb-8 px-4 md:px-0 text-center md:text-left">Leadership</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in">
+              <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div class="absolute inset-0 bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden">
+                      <img src="assets/images/abhisek.png" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                      <h4 class="text-xl font-semibold">Abhisek Sen</h4>
+                      <p class="text-blue-400">Captain</p>
+                  </div>
+                  <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                      <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                      <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                          <a href="https://github.com/Abhisheksen8269" class="flex items-center gap-2 hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                          <a href="https://www.linkedin.com/in/abhishek-sen-aab105259/" class="flex items-center gap-2 hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                          <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in" data-aos-delay="100">
+            <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div class="absolute inset-0 bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden">
+                <img src="assets/images/nishant.png" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                <h4 class="text-xl font-semibold">Neshanth R</h4>
+                <p class="text-blue-400">Vice Captain</p>
+              </div>
+              <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                  <a href="#" class="flex items-center gap-2 hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                  <a href="https://www.linkedin.com/in/neshanth-r/" class="flex items-center gap-2 hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                  <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in" data-aos-delay="200">
+            <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div class="absolute inset-0 bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden">
+                <img src="assets/images/vigesh.png" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                <h4 class="text-xl font-semibold">Vigesh</h4>
+                <p class="text-blue-400">Manager</p>
+              </div>
+              <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                  <a href="#" class="flex items-center gap-2 hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                  <a href="https://www.linkedin.com/in/vigesh/" class="flex items-center gap-2 hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                  <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <h3 class="text-3xl font-semibold mb-8 px-4 md:px-0 text-center md:text-left">Core Team</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in">
+              <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div class="absolute inset-0 bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden text-center p-2">
+                      <img src="assets/images/venu.png" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                      <h4 class="text-xl font-semibold">T Venumadhava Reddy</h4>
+                      <p class="text-blue-400">Mech Lead</p>
+                  </div>
+                  <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                      <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                      <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                          <a href="#" class="hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                          <a href="https://www.linkedin.com/in/venumadhava-reddy-tippana-629439164/" class="hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                          <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in" data-aos-delay="100">
+              <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div class="absolute inset-0 bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden">
+                      <img src="assets/images/pranay.png" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                      <h4 class="text-xl font-semibold">Prajay</h4>
+                      <p class="text-blue-400">ECE Lead</p>
+                  </div>
+                  <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                      <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                      <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                          <a href="#" class="hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                          <a href="https://www.linkedin.com/in/satya-prajay-desamsetti-02a8812ab/" class="hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                          <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in" data-aos-delay="200">
+              <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div class="absolute inset-0 bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden">
+                      <img src="assets/images/prithak.png" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                      <h4 class="text-xl font-semibold">Pritha K</h4>
+                      <p class="text-blue-400">CSE Lead</p>
+                  </div>
+                  <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                      <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                      <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                          <a href="#" class="hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                          <a href="https://www.linkedin.com/in/pritha-k-cs-developer/" class="hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                          <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="group h-80 [perspective:1000px] shadow-lg hover:shadow-blue-500/30 transition" data-aos="zoom-in" data-aos-delay="300">
+              <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div class="absolute inset-0  bg-[#010026] rounded-2xl flex flex-col items-center justify-center backface-hidden">
+                      <img src="assets/images/akash.jpg" alt="Leader" class="w-32 h-32 mx-auto rounded-full object-cover mb-6">
+                      <h4 class="text-xl font-semibold">Akash</h4>
+                      <p class="text-blue-400">CSE Lead</p>
+                  </div>
+                  <div class="absolute inset-0  rounded-2xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4">
+                      <h4 class="text-xl font-semibold mb-4">Connect with me</h4>
+                      <div class="flex flex-wrap justify-center gap-4 text-gray-200 text-lg">
+                          <a href="#" class="hover:text-blue-400"><i class="fab fa-github text-2xl"></i></a>
+                          <a href="#" class="hover:text-blue-600"><i class="fab fa-linkedin text-2xl"></i></a>
+                          <a href="mailto:your.email@example.com" class="hover:text-pink-500"><i class="fas fa-envelope text-2xl"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="Projects" class=" text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-end text-center lg:text-right mb-12">
+              <div class="lg:text-right lg:-mr-8 order-2 lg:order-1">
+                  <h2 class="text-4xl lg:text-5xl font-bold tracking-wide">Our Projects</h2>
+                  <p class="text-gray-300 py-2 max-w-xl">Explore our journey through drones, innovation, and competitions.</p>
+              </div>
+              <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40 order-1 lg:order-2">2</span>
+          </div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-16 md:gap-20">
+      <!-- Image Section -->
+      <div class="md:w-1/2 w-full flex justify-center">
+        <div class="group relative w-full max-w-md">
+          <img 
+            src="assets/images/drone1.png" 
+            alt="Rover" 
+            class="w-full h-[18rem] sm:h-[22rem] object-cover rounded-2xl shadow-2xl transform transition duration-500 group-hover:scale-105 group-hover:shadow-[45px_43px_30px_4px_rgba(30,64,175,0.45)] group-hover:border-[2px] group-hover:border-purple-400"
+          />
+          <!-- Subtle glow effect -->
+          <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition duration-500 blur-md bg-gradient-to-tr from-blue-300/30 to-sky-200/30"></div>
+        </div>
+      </div>
+
+      <!-- Text Section -->
+      <div class="md:w-1/2 w-full">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">About Our Project</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+          At Astra Club, we explore the frontiers of robotics and autonomous systems across land and air.
+          Our Mars Rover features a custom rocker-bogie suspension and autonomous navigation for stable, intelligent exploration on challenging terrains.
+          Meanwhile, our UAV and drone systems focus on aerial innovation, combining computer vision, flight stability, and GPS-based autonomy for mapping, surveillance, and exploration.
+          Together, these projects embody Astra Club’s mission to design advanced, multi-domain robotic systems for the future.
+        </p>
+        <a 
+          href="index2.html" 
+          class="inline-block px-8 py-3 border border-purple-400 rounded-full hover:bg-blue-400 hover:border-black hover:text-white transition-all duration-300 font-semibold tracking-wide shadow-md"
+        >
+          FIND MORE
+        </a>
+      </div>
+    </div>
+  
+  
+
+  <section id="sponsors" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">Our Family of Sponsors</h2>
+        <p class="text-gray-300 max-w-3xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+            Our sponsors have been instrumental in our journey. Their unwavering support has empowered us to design, build, and test cutting-edge drones, participate in competitions, and push the boundaries of aerial innovation.
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-10 lg:gap-16 items-center">
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+                <img src="assets/images/iiitdm.png" alt="IIITDM Kancheepuram" class="h-24 w-auto hover:scale-110 transition-transform duration-300 rounded-full">
+                <p class="mt-4 text-sm font-semibold">IIITDM Kancheepuram</p>
+            </div>
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                <img src="assets/images/DIC_LOGO.png" alt="DIC" class="h-24 w-auto hover:scale-110 transition-transform duration-300 rounded-full">
+                <p class="mt-4 text-sm font-semibold">DIC</p>
+            </div>
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+                <img src="assets/images/tlc.png" alt="TLC" class="h-24 w-auto hover:scale-110 transition-transform duration-300 rounded-full">
+                <p class="mt-4 text-sm font-semibold">TLC</p>
+            </div>
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
+                <img src="assets/images/solid.png" alt="Solid Works" class="h-24 w-auto hover:scale-110 transition-transform duration-300">
+                <p class="mt-4 text-sm font-semibold">Solid Works</p>
+            </div>
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="500">
+                <img src="assets/images/anys.png" alt="Ansys" class="h-24 w-auto hover:scale-110 transition-transform duration-300 rounded-full">
+                <p class="mt-4 text-sm font-semibold">Ansys</p>
+            </div>
+            <div class="flex flex-col items-center" data-aos="zoom-in" data-aos-delay="600">
+                <img src="assets/images/Altium_Logo.png" alt="Altium" class="h-24 w-auto hover:scale-110 transition-transform duration-300 rounded-full">
+                <p class="mt-4 text-sm font-semibold">Altium</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="brochure" class="py-20 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row items-center text-center lg:text-left mb-12">
+              <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40">3</span>
+              <div class="lg:-ml-8">
+                  <h2 class="text-4xl lg:text-5xl font-bold tracking-wide">Brochure</h2>
+                  <p class="text-gray-300 py-2 max-w-xl">Join us as a sponsor to fuel our journey in drones, robotics, and UAV technology.</p>
+              </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+              <div class="w-full md:w-1/2" data-aos="fade-right">
+                  <img src="assets/images/bronchure.png" alt="Project Image" class="w-full h-auto object-cover rounded-3xl shadow-2xl" />
+              </div>
+              <div class="w-full md:w-1/2 text-center md:text-left" data-aos="fade-left">
+                  <h3 class="text-3xl md:text-4xl font-semibold mb-6 leading-tight">Need More Information on Sponsoring?</h3>
+                  <p class="text-lg mb-8 leading-relaxed text-gray-300">
+                      Your partnership inspires us to push boundaries and innovate fearlessly. With your support, we can explore new horizons, develop cutting-edge technologies, and showcase our work globally.
+                  </p>
+                  <a href="#Contact" class="inline-block px-8 py-3 text-white bg-indigo-900 rounded-lg shadow-lg hover:bg-indigo-800 transition-all duration-300 ease-in-out transform hover:scale-105">
+                      Support Innovation
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <section id="Roadmap" class="py-20 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-end text-center lg:text-right mb-12">
+              <div class="lg:text-right lg:-mr-8 order-2 lg:order-1">
+                  <h2 class="text-4xl lg:text-5xl font-bold tracking-wide">Our Roadmap</h2>
+                  <p class="text-gray-300 py-2 max-w-xl">Our Strategic Road Map: Milestones, Competitions, and Future Innovations.</p>
+              </div>
+              <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40 order-1 lg:order-2">4</span>
+          </div>
+
+      <div class="relative mt-12">
+        <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-1 timeline-path z-0 min-w-[100%]"></div>
+        <div id="roadmap-container" class="overflow-x-auto pb-6 pt-10 no-scrollbar cursor-grab">
+          <div class="flex relative min-w-[1500px]">
+              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up">
+                  <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-green-500/50 mt-10 min-h-48">
+                      <span class="text-sm font-light text-gray-400">Q3 2024</span>
+                      <h3 class="text-xl font-bold text-white mb-2">Technoduction</h3>
+                      <p class="text-gray-400 text-sm">Successfully inducted 45+ new members.</p>
+                      <div class="mt-4 text-green-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-check-circle"></i> Completed</div>
+                  </div>
+              </div>
+              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="100">
+                  <div class="bg-blue-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-sky-500/50 mb-10 min-h-48">
+                      <span class="text-sm font-light text-sky-300">Q4 2024</span>
+                      <h3 class="text-xl font-bold text-white mb-2">Project X Prototype</h3>
+                      <p class="text-gray-300 text-sm">Developing autonomous navigation system.</p>
+                      <div class="mt-4 text-sky-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-spinner fa-spin"></i> In Progress</div>
+                  </div>
+              </div>
+              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-purple-500/50 mt-10 min-h-48">
+                  <span class="text-sm font-light text-gray-400">Q1 2025</span>
+                  <h3 class="text-xl font-bold text-white mb-2">SAE AeroDesign</h3>
+                  <p class="text-gray-400 text-sm">Finalizing design and testing phase.</p>
+                  <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-calendar-alt"></i> Upcoming</div>
+                </div>
+              </div>
+              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-purple-500/50 mb-10 min-h-48">
+                  <span class="text-sm font-light text-gray-400">Q2 2025</span>
+                  <h3 class="text-xl font-bold text-white mb-2">National Drone Challenge</h3>
+                  <p class="text-gray-400 text-sm">Pre-competition flight training.</p>
+                  <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-rocket"></i> Competition</div>
+                </div>
+              </div>
+              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-purple-500/50 mt-10 min-h-48">
+                  <span class="text-sm font-light text-gray-400">Q3 2025</span>
+                  <h3 class="text-xl font-bold text-white mb-2">Next Gen UAV Research</h3>
+                  <p class="text-gray-400 text-sm">Kick-off new bio-inspired flight project.</p>
+                  <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-flask"></i> Research</div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-sm mt-8"><i class="fas fa-arrows-alt-h"></i> Drag or scroll to view the full timeline</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="Gallery" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center text-center lg:text-left mb-12">
+          <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40">5</span>
+          <div class="lg:-ml-8">
+              <h2 class="text-4xl lg:text-5xl font-bold text-gray-400 tracking-wide">Gallery</h2>
+              <p class="text-gray-300 py-2 max-w-xl">Explore our journey through photos and memories of Team Astra's accomplishments.</p>
+          </div>
+      </div>
+    </div>
+    <div class="gallery-scroll-container">
+        <div class="gradient-overlay"></div>
+        <div class="gallery-scroll-track" id="galleryTrack">
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/Flight.png" alt="Drone Flight"><div class="topic">Drone Flight Test</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/ex.png" alt="Team Workshop"><div class="topic">Workshop</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/Testing.png" alt="Drone Assembly"><div class="topic">Drone Assembly</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/SAER.png" alt="SAE AEROTHON"><div class="topic">SAE Aerothon</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/teammeet.png" alt="Team Meeting"><div class="topic">Team Meeting</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/IROC.png" alt="IROC"><div class="topic">IROC</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/Delhi.png" alt="Award Ceremony"><div class="topic">Award Ceremony</div></a></div>
+            
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/Flight.png" alt="Drone Flight"><div class="topic">Drone Flight Test</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/ex.png" alt="Team Workshop"><div class="topic">Workshop</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/Testing.png" alt="Drone Assembly"><div class="topic">Drone Assembly</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/SAER.png" alt="SAE AEROTHON"><div class="topic">SAE Aerothon</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/teammeet.png" alt="Team Meeting"><div class="topic">Team Meeting</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/IROC.png" alt="IROC"><div class="topic">IROC</div></a></div>
+            <div class="gallery-item"><a href="#" target="_blank"><img src="assets/images/Delhi.png" alt="Award Ceremony"><div class="topic">Award Ceremony</div></a></div>
+        </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 text-white bg-gray-900/40 overflow-hidden" id="Contact">
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[120%] h-[120%] bg-gradient-to-r from-blue-600/20 via-gray-950/20 to-pink-900/20 rounded-full blur-3xl animate-blob"></div>
+    <div class="absolute bottom-0 right-1/3 w-[80%] h-[80%] bg-gradient-to-l from-purple-400/30 via-pink-400/20 to-blue-400/10 rounded-full blur-2xl animate-blob animation-delay-2000"></div>
+
+    <div class="relative max-w-4xl mx-auto text-center z-10 px-4">
+      <h2 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-6 text-blue-400 tracking-wide">CONTACT US</h2>
+      <p class="text-lg sm:text-xl text-gray-300 mb-12 max-w-2xl mx-auto">Ready to join Team Astra or learn more about our projects? Reach out and connect with us!</p>
+      
+      <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 text-lg mb-16">
+        <div class="flex items-center gap-4 hover:scale-105 transition-transform">
+          <i class="fas fa-envelope text-3xl text-purple-400"></i>
+
+          <a href="mailto:astra@iiitdm.ac.in 
+" class="hover:text-purple-400 transition-colors">astra@iiitdm.ac.in 
+</a>
+        </div>
+        <div class="flex items-center gap-4 hover:scale-105 transition-transform">
+          <i class="fas fa-map-marker-alt text-3xl text-purple-400"></i>
+         <a href="https://www.iiitdm.ac.in/" class="hover:text-purple-400 transition-colors">IIITDM Kancheepuram, Chennai</a>
+
+        </div>
+      </div>
+      
+      <div class="flex flex-col items-center">
+        <p class="text-xl text-gray-300 mb-6">Follow us on</p>
+        <div class="flex items-center gap-8">
+          <a href="https://github.com/" target="_blank" class="text-gray-300 hover:text-purple-400 transition-transform hover:scale-110"><i class="fab fa-github text-4xl"></i></a>
+          <a href="https://instagram.com/" target="_blank" class="text-gray-300 hover:text-purple-400 transition-transform hover:scale-110"><i class="fab fa-instagram text-4xl"></i></a>
+          <a href="https://linkedin.com/" target="_blank" class="text-gray-300 hover:text-purple-400 transition-transform hover:scale-110"><i class="fab fa-linkedin text-4xl"></i></a>
+        </div>
+        
+      </div>
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center px-6 mt-[2rem]">
+      <!-- Left Side -->
+      <p class="text-sm text-gray-300">© 2025 ASTRA. All rights are reserved.</p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('a');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Navbar Style on Scroll ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-gray-900', 'bg-opacity-80', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-gray-900', 'bg-opacity-80', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // --- Drone Parallax Effect ---
+        const drone = document.getElementById("droneModel");
+        if (drone) {
+            document.addEventListener("mousemove", (e) => {
+                if (window.innerWidth > 768) { // Only apply on larger screens
+                    const x = (e.clientX / window.innerWidth - 0.5) * 60;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 40;
+                    drone.style.transform = `translate(${x}px, ${y}px)`;
+                }
+            });
+        }
+
+        // --- Swiper JS ---
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: { slidesPerView: 1, spaceBetween: 20 },
+                768: { slidesPerView: 2, spaceBetween: 30 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // --- AOS (Animate on Scroll) ---
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50
+        });
+
+        // --- Typed JS ---
+        var typeData = new Typed(".role", {
+            strings: [
+                "Exploring the Final Frontier",
+                "Innovating Aerospace",
+                "Launching Dreams into Orbit",
+                "Coding for the Stars",
+                "Building the Future of Flight"
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 1500,
+            loop: true,
+            showCursor: true,
+            cursorChar: "|"
+        });
+
+        // --- Roadmap Drag-to-Scroll ---
+        const roadmapContainer = document.getElementById('roadmap-container');
+        if (roadmapContainer) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            const startDragging = (e) => {
+                isDown = true;
+                roadmapContainer.classList.add('cursor-grabbing');
+                startX = (e.pageX || e.touches[0].pageX) - roadmapContainer.offsetLeft;
+                scrollLeft = roadmapContainer.scrollLeft;
+            };
+
+            const stopDragging = () => {
+                isDown = false;
+                roadmapContainer.classList.remove('cursor-grabbing');
+            };
+
+            const whileDragging = (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = (e.pageX || e.touches[0].pageX) - roadmapContainer.offsetLeft;
+                const walk = (x - startX) * 2; // Multiplier for faster scrolling
+                roadmapContainer.scrollLeft = scrollLeft - walk;
+            };
+
+            // Mouse Events
+            roadmapContainer.addEventListener('mousedown', startDragging);
+            roadmapContainer.addEventListener('mouseleave', stopDragging);
+            roadmapContainer.addEventListener('mouseup', stopDragging);
+            roadmapContainer.addEventListener('mousemove', whileDragging);
+
+            // Touch Events
+            roadmapContainer.addEventListener('touchstart', startDragging);
+            roadmapContainer.addEventListener('touchend', stopDragging);
+            roadmapContainer.addEventListener('touchmove', whileDragging);
+        }
+    });
+  </script>
+
+</body>
