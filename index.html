@@ -412,7 +412,6 @@ body {
               <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40 order-1 lg:order-2">2</span>
           </div>
 <div class="flex flex-col md:flex-row items-center justify-between gap-16 md:gap-20">
-      <!-- Image Section -->
       <div class="md:w-1/2 w-full flex justify-center">
         <div class="group relative w-full max-w-md">
           <img 
@@ -420,12 +419,10 @@ body {
             alt="Rover" 
             class="w-full h-[18rem] sm:h-[22rem] object-cover rounded-2xl shadow-2xl transform transition duration-500 group-hover:scale-105 group-hover:shadow-[45px_43px_30px_4px_rgba(30,64,175,0.45)] group-hover:border-[2px] group-hover:border-purple-400"
           />
-          <!-- Subtle glow effect -->
           <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition duration-500 blur-md bg-gradient-to-tr from-blue-300/30 to-sky-200/30"></div>
         </div>
       </div>
 
-      <!-- Text Section -->
       <div class="md:w-1/2 w-full">
         <h2 class="text-3xl sm:text-4xl font-bold mb-6">About Our Project</h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8">
@@ -520,48 +517,95 @@ body {
 
       <div class="relative mt-12">
         <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-1 timeline-path z-0 min-w-[100%]"></div>
+
         <div id="roadmap-container" class="overflow-x-auto pb-6 pt-10 no-scrollbar cursor-grab">
           <div class="flex relative min-w-[1500px]">
-              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up">
-                  <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-green-500/50 mt-10 min-h-48">
-                      <span class="text-sm font-light text-gray-400">Q3 2024</span>
-                      <h3 class="text-xl font-bold text-white mb-2">Technoduction</h3>
-                      <p class="text-gray-400 text-sm">Successfully inducted 45+ new members.</p>
-                      <div class="mt-4 text-green-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-check-circle"></i> Completed</div>
-                  </div>
-              </div>
-              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="100">
-                  <div class="bg-blue-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-sky-500/50 mb-10 min-h-48">
-                      <span class="text-sm font-light text-sky-300">Q4 2024</span>
-                      <h3 class="text-xl font-bold text-white mb-2">Project X Prototype</h3>
-                      <p class="text-gray-300 text-sm">Developing autonomous navigation system.</p>
-                      <div class="mt-4 text-sky-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-spinner fa-spin"></i> In Progress</div>
-                  </div>
-              </div>
-              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-purple-500/50 mt-10 min-h-48">
-                  <span class="text-sm font-light text-gray-400">Q1 2025</span>
-                  <h3 class="text-xl font-bold text-white mb-2">SAE AeroDesign</h3>
-                  <p class="text-gray-400 text-sm">Finalizing design and testing phase.</p>
-                  <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-calendar-alt"></i> Upcoming</div>
+              
+            <div class="flex-shrink-0 w-60 mx-4 mt-5" data-aos="fade-up">
+                <div class="group h-48 [perspective:1000px] transition **mt-10**">
+                    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 bg-gray-800/90 p-5 rounded-xl shadow-2xl backface-hidden flex flex-col justify-center transition-all hover:scale-[1.02] hover:shadow-green-500/50 **min-h-full**">
+                            <span class="text-sm font-light text-gray-400">Q3 2024</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Technoduction</h3>
+                            <p class="text-gray-400 text-sm">Successfully inducted 45+ new members.</p>
+                            <div class="mt-4 text-green-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-check-circle"></i> Completed</div>
+                        </div>
+                        <div class="absolute inset-0 bg-gray-900 rounded-xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4 shadow-2xl hover:shadow-green-500/50 transition-shadow **min-h-full**">
+                            <h4 class="text-xl font-semibold mb-2 text-green-400">Completed</h4>
+                            <p class="text-gray-400 text-sm text-center">Introduction about the club for 1st juniors.</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-purple-500/50 mb-10 min-h-48">
-                  <span class="text-sm font-light text-gray-400">Q2 2025</span>
-                  <h3 class="text-xl font-bold text-white mb-2">National Drone Challenge</h3>
-                  <p class="text-gray-400 text-sm">Pre-competition flight training.</p>
-                  <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-rocket"></i> Competition</div>
+            </div>
+
+            <div class="flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="group h-48 [perspective:1000px] transition **mb-10**">
+                    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 bg-blue-800/90 p-5 rounded-xl shadow-2xl backface-hidden flex flex-col justify-center transition-all hover:scale-[1.02] hover:shadow-sky-500/50 **min-h-full**">
+                            <span class="text-sm font-light text-sky-300">Q4 2024</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Project X Prototype</h3>
+                            <p class="text-gray-300 text-sm">Developing autonomous navigation system.</p>
+                            <div class="mt-4 text-sky-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-spinner fa-spin"></i> In Progress</div>
+                        </div>
+                        <div class="absolute inset-0 bg-gray-900 rounded-xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4 shadow-2xl hover:shadow-sky-500/50 transition-shadow **min-h-full**">
+                            <h4 class="text-xl font-semibold mb-2 text-sky-400">Focus Area</h4>
+                            <p class="text-gray-400 text-sm text-center">AI integration and testing flight stability algorithms.</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="group relative flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="bg-gray-800/90 p-5 rounded-xl shadow-2xl transition-all hover:scale-105 hover:shadow-purple-500/50 mt-10 min-h-48">
-                  <span class="text-sm font-light text-gray-400">Q3 2025</span>
-                  <h3 class="text-xl font-bold text-white mb-2">Next Gen UAV Research</h3>
-                  <p class="text-gray-400 text-sm">Kick-off new bio-inspired flight project.</p>
-                  <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-flask"></i> Research</div>
+            </div>
+
+            <div class="flex-shrink-0 w-60 mx-4 mt-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="group h-48 [perspective:1000px] transition **mt-10**">
+                    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 bg-gray-800/90 p-5 rounded-xl shadow-2xl backface-hidden flex flex-col justify-center transition-all hover:scale-[1.02] hover:shadow-purple-500/50 **min-h-full**">
+                            <span class="text-sm font-light text-gray-400">Q1 2025</span>
+                            <h3 class="text-xl font-bold text-white mb-2">SAE AeroDesign</h3>
+                            <p class="text-gray-400 text-sm">Finalizing design and testing phase.</p>
+                            <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-calendar-alt"></i> Upcoming</div>
+                        </div>
+                        <div class="absolute inset-0 bg-gray-900 rounded-xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4 shadow-2xl hover:shadow-purple-500/50 transition-shadow **min-h-full**">
+                            <h4 class="text-xl font-semibold mb-2 text-purple-400">Preparation</h4>
+                            <p class="text-gray-400 text-sm text-center">Weight reduction and payload capacity optimization.</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </div>
+
+            <div class="flex-shrink-0 w-60 mx-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="group h-48 [perspective:1000px] transition **mb-10**">
+                    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 bg-gray-800/90 p-5 rounded-xl shadow-2xl backface-hidden flex flex-col justify-center transition-all hover:scale-[1.02] hover:shadow-purple-500/50 **min-h-full**">
+                            <span class="text-sm font-light text-gray-400">Q2 2025</span>
+                            <h3 class="text-xl font-bold text-white mb-2">National Drone Challenge</h3>
+                            <p class="text-gray-400 text-sm">Pre-competition flight training.</p>
+                            <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-rocket"></i> Competition</div>
+                        </div>
+                        <div class="absolute inset-0 bg-gray-900 rounded-xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4 shadow-2xl hover:shadow-purple-500/50 transition-shadow **min-h-full**">
+                            <h4 class="text-xl font-semibold mb-2 text-purple-400">Goal</h4>
+                            <p class="text-gray-400 text-sm text-center">Aimed at placing in the top 5 for the autonomy category.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+            <div class="flex-shrink-0 w-60 mx-4 mt-5" data-aos="fade-up" data-aos-delay="400">
+                <div class="group h-48 [perspective:1000px] transition **mt-10**">
+                    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 bg-gray-800/90 p-5 rounded-xl shadow-2xl backface-hidden flex flex-col justify-center transition-all hover:scale-[1.02] hover:shadow-purple-500/50 **min-h-full**">
+                            <span class="text-sm font-light text-gray-400">Q3 2025</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Next Gen UAV Research</h3>
+                            <p class="text-gray-400 text-sm">Kick-off new bio-inspired flight project.</p>
+                            <div class="mt-4 text-purple-400 text-sm font-semibold flex items-center gap-2"><i class="fas fa-flask"></i> Research</div>
+                        </div>
+                        <div class="absolute inset-0 bg-gray-900 rounded-xl flex flex-col items-center justify-center [transform:rotateY(180deg)] backface-hidden p-4 shadow-2xl hover:shadow-purple-500/50 transition-shadow **min-h-full**">
+                            <h4 class="text-xl font-semibold mb-2 text-purple-400">Innovation</h4>
+                            <p class="text-gray-400 text-sm text-center">Exploring morphing wings and advanced material science.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
           </div>
         </div>
         <p class="text-center text-gray-500 text-sm mt-8"><i class="fas fa-arrows-alt-h"></i> Drag or scroll to view the full timeline</p>
@@ -634,7 +678,6 @@ body {
         
       </div>
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center px-6 mt-[2rem]">
-      <!-- Left Side -->
       <p class="text-sm text-gray-300">© 2025 ASTRA. All rights are reserved.</p>
     </div>
   </section>
@@ -768,3 +811,4 @@ body {
   </script>
 
 </body>
+</html>
