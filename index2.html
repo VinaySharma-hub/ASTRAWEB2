@@ -12,36 +12,36 @@
         .project-card {
             transition: all 0.5s ease;
         }
-
+        
         .project-card:hover {
             transform: scale(1.1);
             box-shadow: 30px 40px 25px rgba(52, 221, 221, 0.2);
         }
-
+        
         .project-content {
             max-height: 0;
             opacity: 0;
             transition: all 0.4s ease;
         }
-
+        
         .project-card.active .project-content {
             max-height: 400px;
             opacity: 1;
         }
-
+        
         html,
         body {
             height: 100%;
         }
-
+        
         body {
             margin: 0;
-            background: radial-gradient(circle at center, #000000, #020116, #010d2e, #4c515f);
+            background: radial-gradient(circle at center, #000000, #020116, #010d2e);
             color: white;
             overflow-x: hidden;
         }
-
         /* Starry background */
+        
         .stars {
             width: 100%;
             height: 100%;
@@ -53,12 +53,11 @@
             opacity: 0.7;
             animation: moveStars 60s linear infinite;
         }
-
+        
         @keyframes moveStars {
             from {
                 background-position: 0 0;
             }
-
             to {
                 background-position: -10000px 5000px;
             }
@@ -66,7 +65,7 @@
     </style>
 </head>
 <div class="fixed inset-0 z-[-1]">
-    <img src="assets/images/Background.png" class="w-full h-full object-cover opacity-20" alt="Background" />
+    <img src="assets/images/Background.png" class="w-full h-full object-cover opacity-5" alt="Background" />
 </div>
 
 <body class="relative overflow-x-hidden">
@@ -116,12 +115,12 @@
     </nav>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-end text-center lg:text-right mb-12">
-            <div class="lg:text-right lg:-mr-8 order-2 lg:order-1">
-                <h2 class="text-4xl lg:text-5xl font-bold tracking-wide">Our Projects</h2>
-                <p class="text-gray-300 py-2 max-w-xl">Explore our journey through drones, innovation, and competitions.</p>
+        <div class="flex flex-col lg:flex-row items-center justify-center  text-center  mb-12">
+            <div class=" lg:-mr-8 order-2 lg:order-1">
+                <h2 class="text-4xl lg:text-5xl font-bold tracking-wide text-center">Our Projects</h2>
+                <p class="text-gray-300 py-2 max-w-xl text-center">Explore our journey through drones, innovation, and competitions.</p>
             </div>
-            <span class="text-[8rem] lg:text-[14rem] font-extrabold text-purple-400 opacity-20 lg:opacity-40 order-1 lg:order-2">𖥂</span>
+
         </div>
     </div>
     <section id="Projects" class="text-white py-20 ">
@@ -132,15 +131,12 @@
                 <div class="bg-[#101828] rounded-xl p-8 shadow-xxl border border-red-950 hover:shadow-[32px_10px_35px_4px_rgba(30,64,175,0.45)] transition-all duration-500 hover:-translate-y-4">
                     <h3 class="text-3xl font-bold mb-4 text-gray-400 text-center"> SAE AEROTHON </h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Our journey through the SAE Aerothon stands as a testament to Astra Club’s commitment to aerial innovation and engineering excellence.
-
-                        In **SAE Aerothon 2025**, our team achieved an outstanding **All India Rank 8** in the Phase I Design Report Presentation, showcasing our expertise in UAV design and systems thinking. The **2024** edition marked another milestone, where we secured a **Top 30 national rank** in the design phase and successfully completed both manual and autonomous flight operations during the Phase II event at Bengaluru.
-
-                        Going back to **SAE Aerothon 2023**, we earned an impressive **AIR 21 overall, AIR 2** in the Design Report Presentation, and proudly won **1st Prize** in the SAE Aerothon Challenger Round held at Bengaluru.
-
-                        Through these consecutive achievements, we continue to advance in the field of unmanned aerial systems, blending creativity, technical skill, and teamwork to push the frontiers of drone innovation.
+                        Our journey through the SAE Aerothon stands as a testament to Astra Club’s commitment to aerial innovation and engineering excellence. In **SAE Aerothon 2025**, our team achieved an outstanding **All India Rank 8** in the Phase I Design Report Presentation,
+                        showcasing our expertise in UAV design and systems thinking. The **2024** edition marked another milestone, where we secured a **Top 30 national rank** in the design phase and successfully completed both manual and autonomous flight
+                        operations during the Phase II event at Bengaluru. Going back to **SAE Aerothon 2023**, we earned an impressive **AIR 21 overall, AIR 2** in the Design Report Presentation, and proudly won **1st Prize** in the SAE Aerothon Challenger
+                        Round held at Bengaluru. Through these consecutive achievements, we continue to advance in the field of unmanned aerial systems, blending creativity, technical skill, and teamwork to push the frontiers of drone innovation.
                     </p>
-                    <a href="https://saeindia.org/aerothon2025/" class="inline-block px-6 py-2 border border-blue-400 rounded-full hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 font-semibold tracking-wide">
+                    <a href="https://saeindia.org/aerothon2025/" class="inline-block px-6 py-2 border border-blue-400 rounded-full hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 font-semibold tracking-wide r">
                         Search More
                     </a>
                 </div>
@@ -148,34 +144,41 @@
                 <div class="bg-[#101828] rounded-2xl p-6 shadow-xl border border-blue-900 hover:shadow-[0_0_35px_4px_rgba(30,64,175,0.45)] transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
                     <div class="relative overflow-hidden rounded-xl">
                         <div id="slider1" class="flex transition-transform duration-700 ease-in-out">
-                            <img src="assets/images/uav1.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 1" />
-                            <img src="assets/images/uav2.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 2" />
-                            <img src="assets/images/uav3.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 3" />
-                            <img src="assets/images/uav4.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 4" />
-                            <img src="assets/images/uav5.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 5" />
-                            <img src="assets/images/uav6.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 6" />
-                            <img src="assets/images/uav7.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 7" />
+                            <img src="assets/imageshtml2/1.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 1" />
+                            <img src="assets/imageshtml2/2.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 2" />
+                            <img src="assets/imageshtml2/7.PNG" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 3" />
+                            <img src="assets/imageshtml2/4.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 4" />
+                            <img src="assets/imageshtml2/5.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 5" />
+                            <img src="assets/imageshtml2/8.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 5" />
+                            <img src="assets/imageshtml2/9.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="SAE Aerothon UAV 5" />
+                            <video class="w-full h-96 object-cover rounded-xl flex-shrink-0" autoplay loop muted controls>
+  <source src="assets/imageshtml2/A25.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
                         </div>
 
+                        <!-- Optional: Manual Buttons -->
                         <button onclick="prevSlide('slider1')" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-blue-600/60 hover:bg-blue-700 text-white p-2 rounded-full z-10">
-                            &#10094;
-                        </button>
+      &#10094;
+    </button>
                         <button onclick="nextSlide('slider1')" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-blue-600/60 hover:bg-blue-700 text-white p-2 rounded-full z-10">
-                            &#10095;
-                        </button>
+      &#10095;
+    </button>
                     </div>
+
                 </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="bg-[#101828] rounded-2xl p-8 shadow-xl border border-blue-900 hover:shadow-[32px_10px_35px_4px_rgba(30,64,175,0.45)] transition-all duration-500 hover:-translate-y-2 order-2 md:order-1">
                     <h3 class="text-3xl font-bold mb-4 text-gray-400 text-center">ISRO Robotics Challenge 2025</h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">
 
-                        Our team proudly qualified among India’s **top 16 teams** (out of 510) in the prestigious **ISRO Robotics Challenge 2025**, held at ISRO Headquarters, Bengaluru on 5th August 2025.
-                        We showcased innovative autonomous robotics solutions through multiple rounds — from 510 registered teams to 16 finalists.
-
-                        We also received an invitation to **National Space Day 2025** at New Delhi, attended by ISRO’s former Chairman **S. Somanath** (leader of Chandrayaan-3, Aditya-L1 & Gaganyaan missions) and Group Commander **Angad Pratap**, one of India’s upcoming astronauts.
+                        Our team proudly qualified among India’s top 16 teams out of 510 in the prestigious ISRO Robotics Challenge 2025, organized by the Indian Space Research Organisation (ISRO). The final round was held at ISRO Headquarters, Bengaluru, on 5th August 2025.
+                        The challenge aimed to design and develop an autonomous robotic system capable of performing complex space exploration and planetary surface tasks. Our robot featured multi-sensor integration, AI-based decision-making, and real-time
+                        vision processing, enabling it to navigate and execute mission objectives efficiently in simulated extraterrestrial environments. We advanced through multiple competitive stages:510 teamd to Top 16 teams showcased their robots
+                        onsite at ISRO Headquarters Our innovation, system design, and mission planning were highly appreciated by ISRO officials. We also received an exclusive invitation to National Space Day 2025 at New Delhi, attended by Dr. S. Somanath
+                        (former ISRO Chairman, leader of Chandrayaan-3, Aditya-L1, and Gaganyaan missions) and Group Commander Angad Pratap, one of India’s future astronauts.
                     </p>
                     <a href="https://www.ursc.gov.in/IRoC-U2025/" class="inline-block px-6 py-2 border border-blue-400 rounded-full hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 font-semibold tracking-wide">
                         Learn More
@@ -184,143 +187,205 @@
 
                 <div class="bg-[#101828] rounded-2xl p-6 shadow-xl border border-blue-900 hover:shadow-[0_0_35px_4px_rgba(30,64,175,0.45)] transition-all duration-500 hover:-translate-y-2 relative overflow-hidden order-1 md:order-2">
                     <div class="relative overflow-hidden rounded-xl">
+                        <!-- Slider container -->
                         <div id="slider2" class="flex transition-transform duration-700 ease-in-out">
-                            <img src="assets/images/uav1.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 1" />
-                            <img src="assets/images/uav2.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 2" />
-                            <img src="assets/images/uav3.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 3" />
-                            <img src="assets/images/uav4.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 4" />
-                            <img src="assets/images/uav5.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 5" />
-                            <img src="assets/images/uav6.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 6" />
-                            <img src="assets/images/uav7.png" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 7" />
+                            <img src="assets/imageshtml2/iroc1.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 1" />
+                            <img src="assets/imageshtml2/iroc3.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 3" />
+                            <img src="assets/imageshtml2/iroc4.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 4" />
+                            <img src="assets/imageshtml2/iroc5.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 5" />
+                            <img src="assets/imageshtml2/iroc6.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 6" />
+                            <img src="assets/imageshtml2/iroc7.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 7" />
+                            <img src="assets/imageshtml2/iroc8.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 8" />
+                            <img src="assets/imageshtml2/iroc9.jpg" class="w-full h-96 object-cover rounded-xl flex-shrink-0" alt="ISRO Robotics Team 9" />
                         </div>
 
+                        <!-- Manual navigation buttons -->
                         <button onclick="prevSlide('slider2')" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-blue-700/60 hover:bg-blue-600 text-white p-2 rounded-full z-10">
-                            &#10094;
-                        </button>
+      &#10094;
+    </button>
                         <button onclick="nextSlide('slider2')" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-blue-600/60 hover:bg-blue-700 text-white p-2 rounded-full z-10">
-                            &#10095;
-                        </button>
+      &#10095;
+    </button>
                     </div>
                 </div>
+
             </div>
         </div>
 
     </section>
 
-    <footer class="bg-gray-950 text-gray-400 py-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            
-            <div class="text-sm mb-3 md:mb-0">
+    <footer class="bg-gray-950 text-gray-400 py-4 ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center ">
+
+            <div class="text-sm mb-3 md:mb-0 ">
                 ©2025 ASTRA. All rights are reserved.
             </div>
 
-            <div class="flex space-x-6 text-sm">
-                <a href="mailto:astra@iiitdm.ac.in " class="hover:text-white transition-colors duration-200">EMAIL</a>
-                <a href="https://instagram.com/" class="hover:text-white transition-colors duration-200">INSTAGRAM</a>
-                <a href="https://linkedin.com/" class="hover:text-white transition-colors duration-200">LINKEDIN</a>
-             
+            <div class="flex space-x-6 text-sm ">
+                <a href="mailto:astra@iiitdm.ac.in " class="hover:text-white transition-colors duration-200 ">EMAIL</a>
+                <a href="https://instagram.com/ " class="hover:text-white transition-colors duration-200 ">INSTAGRAM</a>
+                <a href="https://linkedin.com/ " class="hover:text-white transition-colors duration-200 ">LINKEDIN</a>
+
             </div>
         </div>
     </footer>
- 
-        <script>
-            // State object to keep track of the current slide index for each slider
-            const sliderState = {};
-            const slideIntervals = {}; // To store the interval IDs for clearing
 
-            /**
-             * Moves the specified slider to the next image.
-             * @param {string} id - The ID of the slider container element (e.g., 'slider1').
-             */
-            function nextSlide(id) {
-                const slider = document.getElementById(id);
-                if (!slider) return;
+    <script>
+        // State object to keep track of the current slide index for each slider
+        const sliderState = {};
+        const slideIntervals = {}; // To store the interval IDs for clearing
 
-                const total = slider.children.length;
-                // Initialize state if not present, then increment
-                sliderState[id] = (sliderState[id] === undefined ? 0 : sliderState[id] + 1) % total;
-                slider.style.transform = `translateX(-${sliderState[id] * 100}%)`;
-            }
+        /**
+         * Moves the specified slider to the next image.
+         * @param {string} id - The ID of the slider container element (e.g., 'slider1').
+         */
+        function nextSlide(id) {
+            const slider = document.getElementById(id);
+            if (!slider) return;
 
-            /**
-             * Moves the specified slider to the previous image.
-             * @param {string} id - The ID of the slider container element (e.g., 'slider1').
-             */
-            function prevSlide(id) {
-                const slider = document.getElementById(id);
-                if (!slider) return;
+            const total = slider.children.length;
+            // Initialize state if not present, then increment
+            sliderState[id] = (sliderState[id] === undefined ? 0 : sliderState[id] + 1) % total;
+            slider.style.transform = `translateX(-${sliderState[id] * 100}%)`;
+        }
 
-                const total = slider.children.length;
-                // Initialize state if not present, then decrement, handling wrap-around
-                sliderState[id] = (sliderState[id] === undefined ? 0 : sliderState[id] - 1 + total) % total;
-                slider.style.transform = `translateX(-${sliderState[id] * 100}%)`;
-            }
-            
-            /**
-             * Initializes all necessary components after the page loads.
-             */
-            window.onload = function() {
-                // --- Mobile Menu Toggle ---
-                const menuBtn = document.getElementById('menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                const mobileLinks = document.querySelectorAll('.mobile-menu-link');
+        /**
+         * Moves the specified slider to the previous image.
+         * @param {string} id - The ID of the slider container element (e.g., 'slider1').
+         */
+        function prevSlide(id) {
+            const slider = document.getElementById(id);
+            if (!slider) return;
 
-                if (menuBtn && mobileMenu) {
-                    menuBtn.addEventListener('click', () => {
-                        // Toggles the 'hidden' class on the mobile menu
-                        mobileMenu.classList.toggle('hidden');
-                        // Optional: Change the icon from bars to X
-                        const icon = menuBtn.querySelector('i');
-                        if (mobileMenu.classList.contains('hidden')) {
-                            icon.classList.remove('fa-xmark');
-                            icon.classList.add('fa-bars');
-                        } else {
-                            icon.classList.remove('fa-bars');
-                            icon.classList.add('fa-xmark');
-                        }
-                    });
-                }
-                
-                // Close mobile menu when a link is clicked
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (!mobileMenu.classList.contains('hidden')) {
-                             mobileMenu.classList.add('hidden');
-                             menuBtn.querySelector('i').classList.remove('fa-xmark');
-                             menuBtn.querySelector('i').classList.add('fa-bars');
-                        }
-                    });
-                });
+            const total = slider.children.length;
+            // Initialize state if not present, then decrement, handling wrap-around
+            sliderState[id] = (sliderState[id] === undefined ? 0 : sliderState[id] - 1 + total) % total;
+            slider.style.transform = `translateX(-${sliderState[id] * 100}%)`;
+        }
 
-                // --- Slider Initialization and Auto-Slide ---
-                const sliders = ['slider1', 'slider2']; // Add all your slider IDs here
+        /**
+         * Initializes all necessary components after the page loads.
+         */
+        window.onload = function() {
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-menu-link');
 
-                sliders.forEach(id => {
-                    // Set initial state for each slider
-                    sliderState[id] = 0;
-                    // Start the auto-slide interval for each slider
-                    slideIntervals[id] = setInterval(() => nextSlide(id), 5000); // Auto-slide every 5 seconds
-                    
-                    // Optional: Pause auto-slide on hover to allow users to examine the images
-                    const sliderContainer = document.getElementById(id).closest('.relative.overflow-hidden');
-                    if(sliderContainer) {
-                        sliderContainer.addEventListener('mouseenter', () => clearInterval(slideIntervals[id]));
-                        sliderContainer.addEventListener('mouseleave', () => slideIntervals[id] = setInterval(() => nextSlide(id), 5000));
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    // Toggles the 'hidden' class on the mobile menu
+                    mobileMenu.classList.toggle('hidden');
+                    // Optional: Change the icon from bars to X
+                    const icon = menuBtn.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    } else {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
                     }
                 });
             }
-const navbar = document.getElementById('navbar');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) { // Change 50 to adjust when the color changes
-      navbar.classList.add('bg-gray-900', 'bg-opacity-90', 'backdrop-blur-md');
-    } else {
-      navbar.classList.remove('bg-gray-900', 'bg-opacity-90', 'backdrop-blur-md');
-    }
-  });
-            // The nextSlide and prevSlide functions are kept in the global scope 
-            // so they can be called directly from the HTML `onclick` attributes.
-        </script>
+            // Close mobile menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuBtn.querySelector('i').classList.remove('fa-xmark');
+                        menuBtn.querySelector('i').classList.add('fa-bars');
+                    }
+                });
+            });
+
+            // --- Slider Initialization and Auto-Slide ---
+            const sliders = ['slider1', 'slider2']; // Add all your slider IDs here
+
+            sliders.forEach(id => {
+                // Set initial state for each slider
+                sliderState[id] = 0;
+                // Start the auto-slide interval for each slider
+                slideIntervals[id] = setInterval(() => nextSlide(id), 5000); // Auto-slide every 5 seconds
+
+                // Optional: Pause auto-slide on hover to allow users to examine the images
+                const sliderContainer = document.getElementById(id).closest('.relative.overflow-hidden');
+                if (sliderContainer) {
+                    sliderContainer.addEventListener('mouseenter', () => clearInterval(slideIntervals[id]));
+                    sliderContainer.addEventListener('mouseleave', () => slideIntervals[id] = setInterval(() => nextSlide(id), 5000));
+                }
+            });
+        }
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Change 50 to adjust when the color changes
+                navbar.classList.add('bg-gray-900', 'bg-opacity-90', 'backdrop-blur-md');
+            } else {
+                navbar.classList.remove('bg-gray-900', 'bg-opacity-90', 'backdrop-blur-md');
+            }
+        });
+        // The nextSlide and prevSlide functions are kept in the global scope 
+        // so they can be called directly from the HTML `onclick` attributes.
+        let slideIndex = 0;
+
+        function showSlide(sliderId, index) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.children;
+            const totalSlides = slides.length;
+
+            // wrap around logic
+            if (index >= totalSlides) slideIndex = 0;
+            else if (index < 0) slideIndex = totalSlides - 1;
+            else slideIndex = index;
+
+            // move slider
+            const offset = -slideIndex * 100;
+            slider.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide(sliderId) {
+            showSlide(sliderId, slideIndex + 1);
+        }
+
+        function prevSlide(sliderId) {
+            showSlide(sliderId, slideIndex - 1);
+        }
+
+        // 🔁 Auto-slide every 3 seconds
+        setInterval(() => nextSlide('slider1'), 3000);
+        // Slider state
+        let slider2Index = 0;
+        const slider2 = document.getElementById('slider2');
+        const totalSlides2 = slider2.children.length;
+
+        // Function to show slide
+        function showSlide2(index) {
+            if (index >= totalSlides2) slider2Index = 0;
+            else if (index < 0) slider2Index = totalSlides2 - 1;
+            else slider2Index = index;
+
+            slider2.style.transform = `translateX(-${slider2Index * 100}%)`;
+        }
+
+        // Next / Prev functions
+        function nextSlide(sliderId) {
+            if (sliderId === 'slider2') showSlide2(slider2Index + 1);
+        }
+
+        function prevSlide(sliderId) {
+            if (sliderId === 'slider2') showSlide2(slider2Index - 1);
+        }
+
+        // Auto-slide every 4 seconds
+        let autoSlide2 = setInterval(() => nextSlide('slider2'), 4000);
+
+        // Pause on hover
+        const slider2Container = slider2.closest('.relative.overflow-hidden');
+        slider2Container.addEventListener('mouseenter', () => clearInterval(autoSlide2));
+        slider2Container.addEventListener('mouseleave', () => autoSlide2 = setInterval(() => nextSlide('slider2'), 4000));
+    </script>
     </section>
 </body>
+
 </html>
